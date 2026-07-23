@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #05050a;
+  --bg-elevated: #0b0b14;
+  --surface: rgba(255, 255, 255, 0.045);
+  --surface-border: rgba(255, 255, 255, 0.09);
+  --text: #f2f2f5;
+  --text-muted: #8d8d99;
+  --purple: #8b6bff;
+  --blue: #4c8dff;
+  --emerald: #34d399;
+  --danger: #ff6b6b;
+  --font-display: "Space Grotesk", "Avenir Next", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  min-height: 100dvh;
+}
+
+.font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.glass {
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.bg-glow {
+  background:
+    radial-gradient(600px circle at 15% 10%, rgba(139, 107, 255, 0.16), transparent 60%),
+    radial-gradient(500px circle at 85% 20%, rgba(76, 141, 255, 0.14), transparent 60%),
+    radial-gradient(700px circle at 50% 100%, rgba(52, 211, 153, 0.08), transparent 60%),
+    var(--bg);
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--emerald);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: rgba(139, 107, 255, 0.35);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+}
