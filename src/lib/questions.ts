@@ -21,8 +21,10 @@ export type Question = {
 };
 
 // Pool of questions. Each answer nudges a handful of trait scores.
-// 20 are drawn at random per session; the pool is written to grow past 60
-// over time without changing the scoring shape.
+// Every question includes a neutral/"depends" option with no or minimal
+// trait weight, so nobody's forced into a stronger answer than they mean.
+// 15-20 are drawn at random per session; the pool is written to grow past
+// 60 over time without changing the scoring shape.
 export const QUESTION_POOL: Question[] = [
   {
     id: "reply-after-2-months",
@@ -42,6 +44,7 @@ export const QUESTION_POOL: Question[] = [
       { label: "Love", traits: { empathy: 2 }, topic: "relationships" },
       { label: "Peace", traits: { patience: 2 }, topic: "calm" },
       { label: "Success", traits: { extrovert: 1 }, topic: "ambition" },
+      { label: "Depends on the day", traits: {} },
     ],
   },
   {
@@ -50,6 +53,7 @@ export const QUESTION_POOL: Question[] = [
     options: [
       { label: "Morning", traits: { nightOwl: -2, patience: 1 } },
       { label: "Night", traits: { nightOwl: 2, depth: 1 } },
+      { label: "Honestly, both", traits: {} },
     ],
   },
   {
@@ -58,6 +62,7 @@ export const QUESTION_POOL: Question[] = [
     options: [
       { label: "Dogs", traits: { extrovert: 1 }, topic: "animals" },
       { label: "Cats", traits: { depth: 1 }, topic: "animals" },
+      { label: "Love them both equally", traits: {}, topic: "animals" },
     ],
   },
   {
@@ -66,6 +71,7 @@ export const QUESTION_POOL: Question[] = [
     options: [
       { label: "Call", traits: { extrovert: 2 } },
       { label: "Text", traits: { extrovert: -1, patience: 1 } },
+      { label: "Either works", traits: {} },
     ],
   },
   {
@@ -74,6 +80,7 @@ export const QUESTION_POOL: Question[] = [
     options: [
       { label: "Tea", traits: { patience: 1 }, topic: "coffee & tea" },
       { label: "Coffee", traits: { chaos: 1 }, topic: "coffee & tea" },
+      { label: "Both, depending on the day", traits: {}, topic: "coffee & tea" },
     ],
   },
   {
@@ -84,6 +91,7 @@ export const QUESTION_POOL: Question[] = [
       { label: "Failure", traits: { chaos: -1, extrovert: 1 } },
       { label: "Being alone", traits: { empathy: 2 } },
       { label: "Judgement", traits: { depth: 1 } },
+      { label: "Honestly, none of these", traits: {} },
     ],
   },
   {
@@ -95,6 +103,7 @@ export const QUESTION_POOL: Question[] = [
       { label: "Books", traits: { depth: 2, extrovert: -1 }, topic: "books" },
       { label: "Party", traits: { extrovert: 2, chaos: 1 }, topic: "nightlife" },
       { label: "Sleep", traits: { patience: 1, nightOwl: -1 } },
+      { label: "Depends on the week", traits: {} },
     ],
   },
   {
@@ -106,6 +115,7 @@ export const QUESTION_POOL: Question[] = [
       { label: "Parents", traits: { empathy: 2 } },
       { label: "Business", traits: { chaos: 1, extrovert: 1 }, topic: "ambition" },
       { label: "Shopping", traits: { chaos: 1 } },
+      { label: "A mix of all of these", traits: {} },
     ],
   },
   {
@@ -118,6 +128,7 @@ export const QUESTION_POOL: Question[] = [
       { label: "Deep", traits: { depth: 3 } },
       { label: "Curious", traits: { curiosity: 3 } },
       { label: "Creative", traits: { chaos: 1, curiosity: 1 } },
+      { label: "A bit of everything", traits: {} },
     ],
   },
   {
@@ -130,6 +141,7 @@ export const QUESTION_POOL: Question[] = [
       { label: "Reading", traits: { depth: 2, extrovert: -1 }, topic: "books" },
       { label: "Anime", traits: { curiosity: 1 }, topic: "anime" },
       { label: "Coding", traits: { patience: 1, depth: 1 }, topic: "tech" },
+      { label: "Something else entirely", traits: {} },
     ],
   },
   {
@@ -149,6 +161,7 @@ export const QUESTION_POOL: Question[] = [
       { label: "Advice", traits: { depth: 1 } },
       { label: "Stay silent", traits: { empathy: -1, patience: 1 } },
       { label: "Leave", traits: { extrovert: -2 } },
+      { label: "Depends who it is", traits: {} },
     ],
   },
   {
@@ -159,6 +172,7 @@ export const QUESTION_POOL: Question[] = [
       { label: "Ego", traits: { chaos: -1 } },
       { label: "Rudeness", traits: { empathy: 1 } },
       { label: "Dry texting", traits: { extrovert: 1, patience: -1 } },
+      { label: "Nothing specific, depends", traits: {} },
     ],
   },
   {
@@ -169,6 +183,7 @@ export const QUESTION_POOL: Question[] = [
       { label: "Trading memes", traits: { humor: 3, chaos: 1 }, topic: "internet culture" },
       { label: "Venting", traits: { empathy: 2 } },
       { label: "Planning something", traits: { patience: 1 } },
+      { label: "Whatever the moment calls for", traits: {} },
     ],
   },
   {
@@ -179,6 +194,7 @@ export const QUESTION_POOL: Question[] = [
       { label: "Nothing planned", traits: { patience: 2, nightOwl: 1 } },
       { label: "Concert", traits: { extrovert: 2 }, topic: "music" },
       { label: "Deep cleaning", traits: { patience: 2 } },
+      { label: "Depends on my mood", traits: {} },
     ],
   },
   {
@@ -189,6 +205,7 @@ export const QUESTION_POOL: Question[] = [
       { label: "Push back", traits: { chaos: 1, extrovert: 1 } },
       { label: "Try to joke it off", traits: { humor: 2 } },
       { label: "Ask questions", traits: { curiosity: 2, empathy: 1 } },
+      { label: "Depends who it's with", traits: {} },
     ],
   },
   {
@@ -199,6 +216,7 @@ export const QUESTION_POOL: Question[] = [
       { label: "Get lost on purpose", traits: { chaos: 2, curiosity: 2 }, topic: "travel" },
       { label: "Museum", traits: { depth: 2 } },
       { label: "Nap", traits: { nightOwl: 1, patience: 1 } },
+      { label: "Whatever feels right in the moment", traits: {} },
     ],
   },
   {
@@ -209,6 +227,7 @@ export const QUESTION_POOL: Question[] = [
       { label: "Loud and fast", traits: { chaos: 2 }, topic: "music" },
       { label: "Whatever's trending", traits: { extrovert: 1 }, topic: "music" },
       { label: "Same 5 songs on repeat", traits: { patience: 2 }, topic: "music" },
+      { label: "It changes every week", traits: {}, topic: "music" },
     ],
   },
   {
@@ -219,6 +238,7 @@ export const QUESTION_POOL: Question[] = [
       { label: "Within the hour", traits: { patience: 1 } },
       { label: "Whenever I remember", traits: { chaos: 1, patience: -1 } },
       { label: "I forget I have a phone", traits: { nightOwl: 1, chaos: 1 } },
+      { label: "Depends who's texting", traits: {} },
     ],
   },
   {
@@ -229,6 +249,7 @@ export const QUESTION_POOL: Question[] = [
       { label: "Say thank you and move on", traits: { patience: 1 } },
       { label: "Overthink it for a week", traits: { depth: 2 } },
       { label: "Compliment them back", traits: { empathy: 2, extrovert: 1 } },
+      { label: "Depends on my mood that day", traits: {} },
     ],
   },
   {
@@ -239,6 +260,7 @@ export const QUESTION_POOL: Question[] = [
       { label: "Call it out directly", traits: { chaos: 1, curiosity: 1 } },
       { label: "Quietly distance", traits: { extrovert: -2 } },
       { label: "Genuinely don't mind", traits: { patience: 2 } },
+      { label: "Depends how often it happens", traits: {} },
     ],
   },
   {
@@ -249,6 +271,7 @@ export const QUESTION_POOL: Question[] = [
       { label: "Marathon of a show", traits: { nightOwl: 1 }, topic: "shows" },
       { label: "Brunch with people", traits: { extrovert: 2 }, topic: "food" },
       { label: "Catching up on everything I ignored all week", traits: { chaos: 1 } },
+      { label: "Depends on the week I've had", traits: {} },
     ],
   },
   {
@@ -269,6 +292,7 @@ export const QUESTION_POOL: Question[] = [
       { label: "Politely decline, move on", traits: { patience: 1 } },
       { label: "Entertain it a little", traits: { chaos: 2 } },
       { label: "Ask my friend first", traits: { empathy: 1 } },
+      { label: "Depends on the situation", traits: {} },
     ],
   },
   {
@@ -279,6 +303,7 @@ export const QUESTION_POOL: Question[] = [
       { label: "Being around people", traits: { extrovert: 2 } },
       { label: "A good conversation", traits: { depth: 1, empathy: 1 } },
       { label: "Doing nothing at all", traits: { nightOwl: 1, patience: 1 } },
+      { label: "A bit of both", traits: {} },
     ],
   },
   {
@@ -289,6 +314,7 @@ export const QUESTION_POOL: Question[] = [
       { label: "I immediately say something", traits: { chaos: 1, extrovert: 1 } },
       { label: "I start overanalyzing it", traits: { depth: 1 } },
       { label: "I make a joke", traits: { humor: 2 } },
+      { label: "Depends who I'm with", traits: {} },
     ],
   },
   {
@@ -300,6 +326,7 @@ export const QUESTION_POOL: Question[] = [
       { label: "Philosophy / big questions", traits: { depth: 3 }, topic: "ideas" },
       { label: "Gossip", traits: { extrovert: 1, humor: 1 }, topic: "people" },
       { label: "Tech & AI", traits: { curiosity: 1 }, topic: "tech" },
+      { label: "Honestly, anything", traits: {} },
     ],
   },
   {
@@ -310,6 +337,7 @@ export const QUESTION_POOL: Question[] = [
       { label: "Need a minute first", traits: { patience: 1 } },
       { label: "Get defensive before admitting it", traits: { chaos: 1 } },
       { label: "Show it rather than say it", traits: { depth: 1 } },
+      { label: "Depends on the situation", traits: {} },
     ],
   },
   {
@@ -320,6 +348,7 @@ export const QUESTION_POOL: Question[] = [
       { label: "A genuinely funny half hour", traits: { humor: 3 } },
       { label: "Just curious what a random person thinks", traits: { curiosity: 3 } },
       { label: "Whatever happens, happens", traits: { chaos: 2 } },
+      { label: "I genuinely don't know until it happens", traits: {} },
     ],
   },
 ];
