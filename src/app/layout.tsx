@@ -15,7 +15,7 @@ const body = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ONE — One stranger. One conversation. One chance.",
+  title: "XOXO — One stranger. One conversation. One chance.",
   description:
     "Meet one random stranger for one meaningful conversation. Not a dating app — a place for curiosity, honesty, and one memorable exchange.",
 };

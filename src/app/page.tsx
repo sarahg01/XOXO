@@ -67,7 +67,7 @@ export default function Landing() {
             "If you both say Talk, the chat opens — for 30 minutes, max 100 messages.",
           ].map((step, i) => (
             <GlassCard key={i} className="flex items-start gap-4 py-4">
-              <span className="font-display text-[var(--emerald)] text-lg">
+              <span className="font-display text-[var(--blush)] text-lg">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <p className="text-sm text-[var(--text)]/90">{step}</p>
@@ -77,15 +77,15 @@ export default function Landing() {
       </section>
 
       <section className="w-full max-w-md mx-auto px-6 py-10">
-        <Eyebrow>Why ONE exists</Eyebrow>
+        <Eyebrow>Why XOXO exists</Eyebrow>
         <p className="text-sm text-[var(--text-muted)] mb-6">
-          Endless swiping optimizes for options. ONE optimizes for one good
+          Endless swiping optimizes for options. XOXO optimizes for one good
           conversation — then lets it go, on purpose.
         </p>
         <div className="grid grid-cols-2 gap-3">
           {FEATURES.map((f) => (
             <GlassCard key={f.title} className="p-4">
-              <f.icon size={18} className="text-[var(--purple)] mb-3" />
+              <f.icon size={18} className="text-[var(--gold)] mb-3" />
               <p className="font-medium text-sm mb-1">{f.title}</p>
               <p className="text-xs text-[var(--text-muted)] leading-relaxed">{f.body}</p>
             </GlassCard>

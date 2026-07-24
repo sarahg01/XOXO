@@ -48,7 +48,7 @@ export function Button({ children, className, variant = "primary", ...props }: B
     "focus-ring inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 text-sm font-medium transition-all active:scale-[0.97]";
   const styles: Record<string, string> = {
     primary:
-      "text-white shadow-[0_0_24px_rgba(139,107,255,0.35)] bg-gradient-to-br from-[var(--purple)] to-[var(--blue)] hover:brightness-110",
+      "text-white shadow-[0_0_24px_rgba(139,107,255,0.35)] bg-gradient-to-br from-[var(--gold)] to-[var(--rose)] hover:brightness-110",
     secondary: "glass text-[var(--text)] hover:bg-white/[0.08]",
     ghost: "text-[var(--text-muted)] hover:text-[var(--text)]",
     danger: "bg-[var(--danger)]/15 text-[var(--danger)] border border-[var(--danger)]/30 hover:bg-[var(--danger)]/25",

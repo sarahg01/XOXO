@@ -29,14 +29,14 @@ export default function LoginPage() {
       <h1 className="font-display text-2xl mb-2">What's your number?</h1>
       <p className="text-sm text-[var(--text-muted)] mb-8 max-w-xs">
         We'll text you a one-time code. Your number is never shown to anyone
-        on ONE.
+        on XOXO.
       </p>
 
       <GlassCard className="w-full text-left">
         <label className="text-xs text-[var(--text-muted)] mb-2 block">
           Phone number
         </label>
-        <div className="flex items-center gap-2 rounded-xl bg-white/[0.04] border border-white/10 px-4 py-3 focus-within:border-[var(--emerald)]/50">
+        <div className="flex items-center gap-2 rounded-xl bg-white/[0.04] border border-white/10 px-4 py-3 focus-within:border-[var(--blush)]/50">
           <span className="text-[var(--text-muted)] text-sm">+91</span>
           <input
             autoFocus

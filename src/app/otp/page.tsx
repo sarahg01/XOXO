@@ -47,7 +47,7 @@ export default function OtpPage() {
       <p className="text-sm text-[var(--text-muted)] mb-1 max-w-xs">
         We sent a 6-digit code to +91 {phone}.
       </p>
-      <p className="text-xs text-[var(--emerald)] mb-8">
+      <p className="text-xs text-[var(--blush)] mb-8">
         Demo mode — use 123456
       </p>
 
@@ -63,7 +63,7 @@ export default function OtpPage() {
               onChange={(e) => handleChange(i, e.target.value)}
               inputMode="numeric"
               maxLength={1}
-              className="w-10 h-12 text-center rounded-xl bg-white/[0.04] border border-white/10 focus:border-[var(--emerald)]/50 outline-none text-lg"
+              className="w-10 h-12 text-center rounded-xl bg-white/[0.04] border border-white/10 focus:border-[var(--blush)]/50 outline-none text-lg"
             />
           ))}
         </div>

@@ -128,7 +128,7 @@ export default function ChatPage() {
               className={
                 "max-w-[75%] rounded-2xl px-4 py-2.5 text-sm " +
                 (m.from === "me"
-                  ? "self-end bg-gradient-to-br from-[var(--purple)] to-[var(--blue)] text-white rounded-br-md"
+                  ? "self-end bg-gradient-to-br from-[var(--gold)] to-[var(--rose)] text-white rounded-br-md"
                   : "self-start glass rounded-bl-md")
               }
             >
@@ -174,12 +174,12 @@ export default function ChatPage() {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleSend()}
             placeholder="Type a message"
-            className="flex-1 glass rounded-2xl px-4 py-3 text-sm outline-none focus:border-[var(--emerald)]/40"
+            className="flex-1 glass rounded-2xl px-4 py-3 text-sm outline-none focus:border-[var(--blush)]/40"
           />
           <button
             onClick={handleSend}
             disabled={!input.trim()}
-            className="focus-ring rounded-2xl p-3 bg-gradient-to-br from-[var(--purple)] to-[var(--blue)] disabled:opacity-40"
+            className="focus-ring rounded-2xl p-3 bg-gradient-to-br from-[var(--gold)] to-[var(--rose)] disabled:opacity-40"
           >
             <Send size={16} />
           </button>

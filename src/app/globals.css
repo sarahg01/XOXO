@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #05050a;
-  --bg-elevated: #0b0b14;
+  --bg: #0a0709;
+  --bg-elevated: #120d10;
   --surface: rgba(255, 255, 255, 0.045);
   --surface-border: rgba(255, 255, 255, 0.09);
-  --text: #f2f2f5;
-  --text-muted: #8d8d99;
-  --purple: #8b6bff;
-  --blue: #4c8dff;
-  --emerald: #34d399;
+  --text: #f5efe9;
+  --text-muted: #a89890;
+  --gold: #d4af6a;
+  --rose: #c2607a;
+  --blush: #f0a8bb;
   --danger: #ff6b6b;
   --font-display: "Space Grotesk", "Avenir Next", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Inter", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
@@ -51,19 +51,19 @@ body {
 
 .bg-glow {
   background:
-    radial-gradient(600px circle at 15% 10%, rgba(139, 107, 255, 0.16), transparent 60%),
-    radial-gradient(500px circle at 85% 20%, rgba(76, 141, 255, 0.14), transparent 60%),
-    radial-gradient(700px circle at 50% 100%, rgba(52, 211, 153, 0.08), transparent 60%),
+    radial-gradient(600px circle at 15% 10%, rgba(212, 175, 106, 0.14), transparent 60%),
+    radial-gradient(500px circle at 85% 20%, rgba(194, 96, 122, 0.16), transparent 60%),
+    radial-gradient(700px circle at 50% 100%, rgba(240, 168, 187, 0.08), transparent 60%),
     var(--bg);
 }
 
 .focus-ring:focus-visible {
-  outline: 2px solid var(--emerald);
+  outline: 2px solid var(--blush);
   outline-offset: 2px;
 }
 
 ::selection {
-  background: rgba(139, 107, 255, 0.35);
+  background: rgba(212, 175, 106, 0.3);
 }
 
 ::-webkit-scrollbar {

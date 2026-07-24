@@ -1,6 +1,6 @@
 "use client";
 
-import { GeneratedProfile } from "@/lib/generateProfile";
+import { DisplayProfile } from "@/lib/generateProfile";
 import { GlassCard } from "./ui";
 
 function StatBar({ label, value }: { label: string; value: number }) {
@@ -12,7 +12,7 @@ function StatBar({ label, value }: { label: string; value: number }) {
       </div>
       <div className="h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
         <div
-          className="h-full rounded-full bg-gradient-to-r from-[var(--purple)] to-[var(--emerald)]"
+          className="h-full rounded-full bg-gradient-to-r from-[var(--gold)] to-[var(--blush)]"
           style={{ width: `${value}%` }}
         />
       </div>
@@ -20,7 +20,7 @@ function StatBar({ label, value }: { label: string; value: number }) {
   );
 }
 
-export function ProfileCard({ profile }: { profile: GeneratedProfile }) {
+export function ProfileCard({ profile }: { profile: DisplayProfile }) {
   return (
     <GlassCard className="w-full">
       <div className="flex items-baseline justify-between mb-1">
@@ -35,7 +35,7 @@ export function ProfileCard({ profile }: { profile: GeneratedProfile }) {
         {profile.likes.map((l) => (
           <span
             key={l}
-            className="text-xs px-3 py-1.5 rounded-full bg-[var(--purple)]/15 text-[var(--purple)] border border-[var(--purple)]/20"
+            className="text-xs px-3 py-1.5 rounded-full bg-[var(--gold)]/15 text-[var(--gold)] border border-[var(--gold)]/20"
           >
             {l}
           </span>
@@ -44,7 +44,7 @@ export function ProfileCard({ profile }: { profile: GeneratedProfile }) {
 
       <div className="grid grid-cols-2 gap-3 mb-5">
         <div>
-          <p className="text-xs text-[var(--emerald)] mb-1.5">Green Flags</p>
+          <p className="text-xs text-[var(--blush)] mb-1.5">Green Flags</p>
           <ul className="text-xs text-[var(--text)]/80 space-y-1">
             {profile.greenFlags.map((f) => (
               <li key={f}>· {f}</li>

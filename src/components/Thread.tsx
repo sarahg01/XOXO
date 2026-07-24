@@ -14,8 +14,8 @@ export function Thread({ size = 220 }: { size?: number }) {
     >
       <defs>
         <linearGradient id="threadGrad" x1="0" y1="0" x2="220" y2="0" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="var(--purple)" />
-          <stop offset="100%" stopColor="var(--emerald)" />
+          <stop offset="0%" stopColor="var(--gold)" />
+          <stop offset="100%" stopColor="var(--blush)" />
         </linearGradient>
         <filter id="glow">
           <feGaussianBlur stdDeviation="3" result="blur" />
@@ -41,7 +41,7 @@ export function Thread({ size = 220 }: { size?: number }) {
         cx="20"
         cy="55"
         r="7"
-        fill="var(--purple)"
+        fill="var(--gold)"
         filter="url(#glow)"
         initial={{ scale: 0 }}
         animate={{ scale: [0, 1.2, 1] }}
@@ -51,7 +51,7 @@ export function Thread({ size = 220 }: { size?: number }) {
         cx="200"
         cy="55"
         r="7"
-        fill="var(--emerald)"
+        fill="var(--blush)"
         filter="url(#glow)"
         initial={{ scale: 0 }}
         animate={{ scale: [0, 1.2, 1] }}

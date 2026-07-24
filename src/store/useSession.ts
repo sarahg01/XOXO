@@ -1,7 +1,7 @@
 "use client";
 
 import { create } from "zustand";
-import { GeneratedProfile } from "@/lib/generateProfile";
+import { DisplayProfile } from "@/lib/generateProfile";
 import { Stranger } from "@/lib/strangers";
 
 export type ChatMessage = {
@@ -30,8 +30,10 @@ type SessionState = {
   phone: string;
   otpVerified: boolean;
   username: string;
+  age: number | null;
+  zodiac: string | null;
   answers: Record<string, string>;
-  profile: GeneratedProfile | null;
+  profile: DisplayProfile | null;
 
   skippedIds: string[];
   currentStranger: Stranger | null;
@@ -46,8 +48,10 @@ type SessionState = {
   setPhone: (phone: string) => void;
   verifyOtp: () => void;
   setUsername: (name: string) => void;
+  setAge: (age: number) => void;
+  setZodiac: (zodiac: string) => void;
   setAnswer: (questionId: string, optionLabel: string) => void;
-  setProfile: (profile: GeneratedProfile) => void;
+  setProfile: (profile: DisplayProfile) => void;
 
   skipCurrent: () => void;
   talkCurrent: () => void;
@@ -67,6 +71,8 @@ export const useSession = create<SessionState>((set, get) => ({
   phone: "",
   otpVerified: false,
   username: "",
+  age: null,
+  zodiac: null,
   answers: {},
   profile: null,
 
@@ -83,6 +89,8 @@ export const useSession = create<SessionState>((set, get) => ({
   setPhone: (phone) => set({ phone }),
   verifyOtp: () => set({ otpVerified: true }),
   setUsername: (name) => set({ username: name }),
+  setAge: (age) => set({ age }),
+  setZodiac: (zodiac) => set({ zodiac }),
   setAnswer: (questionId, optionLabel) =>
     set((s) => ({ answers: { ...s.answers, [questionId]: optionLabel } })),
   setProfile: (profile) => set({ profile }),

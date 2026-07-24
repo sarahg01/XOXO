@@ -2,13 +2,13 @@
 
 import { motion } from "framer-motion";
 import { BadgeCheck } from "lucide-react";
-import { GeneratedProfile } from "@/lib/generateProfile";
+import { DisplayProfile } from "@/lib/generateProfile";
 
 function hashToId(seed: string): string {
   let h = 0;
   for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) | 0;
   const num = Math.abs(h).toString(36).toUpperCase().slice(0, 6).padStart(6, "0");
-  return `ONE-${num}`;
+  return `XOXO-${num}`;
 }
 
 function Barcode() {
@@ -26,14 +26,8 @@ function Barcode() {
   );
 }
 
-export function IdentityCard({
-  username,
-  profile,
-}: {
-  username: string;
-  profile: GeneratedProfile;
-}) {
-  const idNumber = hashToId(username + profile.dob);
+export function IdentityCard({ profile }: { profile: DisplayProfile }) {
+  const idNumber = hashToId(profile.name + profile.age + profile.zodiac);
   const issued = new Date().toLocaleDateString("en-IN", {
     day: "2-digit",
     month: "short",
@@ -49,27 +43,26 @@ export function IdentityCard({
       className="w-full rounded-3xl overflow-hidden glass relative"
       style={{ perspective: 800 }}
     >
-      <div className="h-2 w-full bg-gradient-to-r from-[var(--purple)] via-[var(--blue)] to-[var(--emerald)]" />
+      <div className="h-2 w-full bg-gradient-to-r from-[var(--gold)] via-[var(--rose)] to-[var(--blush)]" />
 
       <div className="p-6">
         <div className="flex items-center justify-between mb-6">
           <span className="font-display text-sm tracking-[0.3em] text-[var(--text-muted)]">
-            ONE
+            XOXO
           </span>
-          <span className="flex items-center gap-1 text-[11px] text-[var(--emerald)] bg-[var(--emerald)]/10 border border-[var(--emerald)]/25 rounded-full px-2.5 py-1">
+          <span className="flex items-center gap-1 text-[11px] text-[var(--blush)] bg-[var(--blush)]/10 border border-[var(--blush)]/25 rounded-full px-2.5 py-1">
             <BadgeCheck size={12} /> Verified
           </span>
         </div>
 
         <div className="flex items-center gap-4 mb-5">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[var(--purple)] to-[var(--blue)] flex items-center justify-center font-display text-2xl text-white shrink-0">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[var(--gold)] to-[var(--rose)] flex items-center justify-center font-display text-2xl text-white shrink-0">
             {initial}
           </div>
           <div>
             <p className="font-display text-xl leading-tight">
               {profile.name}, {profile.age}
             </p>
-            <p className="text-xs text-[var(--text-muted)]">@{username}</p>
             <p className="text-xs text-[var(--text-muted)] mt-0.5">{profile.zodiac}</p>
           </div>
         </div>
@@ -87,7 +80,7 @@ export function IdentityCard({
 
         <div className="flex items-center justify-between pt-4 border-t border-dashed border-white/15">
           <p className="text-[10px] text-[var(--text-muted)] max-w-[55%]">
-            Generated from your answers. Not editable.
+            Your bio and stats below are generated from your answers.
           </p>
           <Barcode />
         </div>
@@ -95,3 +88,4 @@ export function IdentityCard({
     </motion.div>
   );
 }
+

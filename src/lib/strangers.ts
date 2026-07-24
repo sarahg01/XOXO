@@ -1,6 +1,6 @@
-import { GeneratedProfile } from "./generateProfile";
+import { DisplayProfile } from "./generateProfile";
 
-export type Stranger = GeneratedProfile & {
+export type Stranger = DisplayProfile & {
   id: string;
   replyBank: string[];
 };
@@ -10,7 +10,6 @@ export const STRANGERS: Stranger[] = [
     id: "s1",
     name: "Rhea",
     age: 24,
-    dob: "2001-03-14",
     zodiac: "♓ Pisces",
     bio: "An introverted night owl who secretly enjoys deep conversations more than small talk.",
     likes: ["gaming", "music", "dogs", "travel"],
@@ -43,7 +42,6 @@ export const STRANGERS: Stranger[] = [
     id: "s2",
     name: "Kabir",
     age: 22,
-    dob: "2003-08-02",
     zodiac: "♌ Leo",
     bio: "Chaotic on purpose, funnier than they let on, and always up for one honest conversation.",
     likes: ["gym", "spontaneous plans", "loud playlists"],
@@ -76,7 +74,6 @@ export const STRANGERS: Stranger[] = [
     id: "s3",
     name: "Maya",
     age: 27,
-    dob: "1998-11-20",
     zodiac: "♏ Scorpio",
     bio: "Picks conversations carefully — endlessly curious and a genuinely good listener.",
     likes: ["books", "board games", "quiet mornings"],
@@ -109,7 +106,6 @@ export const STRANGERS: Stranger[] = [
     id: "s4",
     name: "Advait",
     age: 20,
-    dob: "2005-06-09",
     zodiac: "♊ Gemini",
     bio: "Talks to strangers on purpose — endlessly curious and quick with a joke.",
     likes: ["anime", "coding", "new places"],

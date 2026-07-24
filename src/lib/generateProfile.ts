@@ -1,10 +1,9 @@
 import { QUESTION_POOL, Trait, Question } from "./questions";
 
+// Everything here is derived from questionnaire answers. Identity fields
+// (name, age, zodiac) are supplied directly by the user, never generated —
+// see DisplayProfile below, which is what's actually rendered on cards.
 export type GeneratedProfile = {
-  name: string;
-  age: number;
-  dob: string;
-  zodiac: string;
   bio: string;
   likes: string[];
   dislikes: string[];
@@ -24,6 +23,14 @@ export type GeneratedProfile = {
   responseSpeed: "Instant" | "Quick" | "Relaxed" | "Whenever";
   favoriteTopics: string[];
   conversationStarters: string[];
+};
+
+// The shape actually shown on profile cards: user-provided identity fields
+// combined with the generated stats above.
+export type DisplayProfile = GeneratedProfile & {
+  name: string; // the nickname the user typed, shown as-is
+  age: number; // entered by the user
+  zodiac: string; // chosen by the user, e.g. "♋ Cancer"
 };
 
 function mulberry32(seed: number) {
@@ -48,27 +55,6 @@ function clamp(n: number, min: number, max: number) {
   return Math.max(min, Math.min(max, n));
 }
 
-const FIRST_NAMES = [
-  "Sarah", "Aria", "Kai", "Zoe", "Rhea", "Dev", "Mira", "Ishaan", "Nova",
-  "Arjun", "Leah", "Vikram", "Tara", "Nikhil", "Ava", "Rohan", "Isla",
-  "Advait", "Maya", "Kabir",
-];
-
-const ZODIACS: { name: string; symbol: string }[] = [
-  { name: "Aries", symbol: "♈" },
-  { name: "Taurus", symbol: "♉" },
-  { name: "Gemini", symbol: "♊" },
-  { name: "Cancer", symbol: "♋" },
-  { name: "Leo", symbol: "♌" },
-  { name: "Virgo", symbol: "♍" },
-  { name: "Libra", symbol: "♎" },
-  { name: "Scorpio", symbol: "♏" },
-  { name: "Sagittarius", symbol: "♐" },
-  { name: "Capricorn", symbol: "♑" },
-  { name: "Aquarius", symbol: "♒" },
-  { name: "Pisces", symbol: "♓" },
-];
-
 const BIO_TEMPLATES: Array<(t: Traits) => string> = [
   (t) =>
     `A${t.nightOwl > 55 ? "n introverted" : " curious"} ${
@@ -89,10 +75,11 @@ const BIO_TEMPLATES: Array<(t: Traits) => string> = [
 type Traits = Record<Trait, number>;
 
 export function generateProfile(
-  username: string,
+  seedName: string,
+  seedAge: number,
   answers: Record<string, string>
 ): GeneratedProfile {
-  const seed = hashSeed(username + Object.values(answers).join("|"));
+  const seed = hashSeed(seedName + seedAge + Object.values(answers).join("|"));
   const rand = mulberry32(seed);
 
   // Aggregate trait deltas from answered questions.
@@ -146,19 +133,6 @@ export function generateProfile(
     patience: patiencePct,
     depth: depthPct,
   };
-
-  const name = FIRST_NAMES[Math.floor(rand() * FIRST_NAMES.length)];
-  const age = 18 + Math.floor(rand() * 14); // 18-31
-  const zodiac = ZODIACS[Math.floor(rand() * ZODIACS.length)];
-
-  const now = new Date();
-  const birthYear = now.getFullYear() - age;
-  const dobDate = new Date(
-    birthYear,
-    Math.floor(rand() * 12),
-    1 + Math.floor(rand() * 28)
-  );
-  const dob = dobDate.toISOString().slice(0, 10);
 
   const bio = BIO_TEMPLATES[Math.floor(rand() * BIO_TEMPLATES.length)](traits);
 
@@ -215,10 +189,6 @@ export function generateProfile(
   ).filter((v, i, arr) => arr.indexOf(v) === i);
 
   return {
-    name,
-    age,
-    dob,
-    zodiac: `${zodiac.symbol} ${zodiac.name}`,
     bio,
     likes,
     dislikes,

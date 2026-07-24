@@ -91,7 +91,7 @@ export default function QuestionnairePage() {
     <Shell>
       <div className="w-full h-1 rounded-full bg-white/[0.06] overflow-hidden mb-6">
         <motion.div
-          className="h-full bg-gradient-to-r from-[var(--purple)] to-[var(--emerald)]"
+          className="h-full bg-gradient-to-r from-[var(--gold)] to-[var(--blush)]"
           animate={{ width: `${progress}%` }}
           transition={{ duration: 0.3 }}
         />
@@ -132,7 +132,7 @@ export default function QuestionnairePage() {
                     className={
                       "focus-ring text-left rounded-2xl px-5 py-4 glass transition-all " +
                       (isSelected
-                        ? "border-[var(--emerald)]/60 bg-[var(--emerald)]/10"
+                        ? "border-[var(--blush)]/60 bg-[var(--blush)]/10"
                         : "hover:bg-white/[0.08] hover:border-white/20")
                     }
                   >

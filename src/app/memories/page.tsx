@@ -46,7 +46,7 @@ export default function MemoriesPage() {
                   {m.topics.map((t) => (
                     <span
                       key={t}
-                      className="text-[11px] px-2.5 py-1 rounded-full bg-[var(--purple)]/15 text-[var(--purple)]"
+                      className="text-[11px] px-2.5 py-1 rounded-full bg-[var(--gold)]/15 text-[var(--gold)]"
                     >
                       {t}
                     </span>

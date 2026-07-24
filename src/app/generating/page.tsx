@@ -9,6 +9,7 @@ import { ProfileCard } from "@/components/ProfileCard";
 import { IdentityCard } from "@/components/IdentityCard";
 import { useSession } from "@/store/useSession";
 import { generateProfile } from "@/lib/generateProfile";
+import { zodiacLabel } from "@/lib/zodiac";
 
 const STEPS = [
   "Reading your answers",
@@ -20,6 +21,8 @@ const STEPS = [
 export default function GeneratingPage() {
   const router = useRouter();
   const username = useSession((s) => s.username);
+  const age = useSession((s) => s.age);
+  const zodiac = useSession((s) => s.zodiac);
   const answers = useSession((s) => s.answers);
   const profile = useSession((s) => s.profile);
   const setProfile = useSession((s) => s.setProfile);
@@ -28,7 +31,7 @@ export default function GeneratingPage() {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    if (!username) {
+    if (!username || !age || !zodiac) {
       router.replace("/username");
       return;
     }
@@ -36,8 +39,13 @@ export default function GeneratingPage() {
       setStep((s) => {
         if (s >= STEPS.length - 1) {
           clearInterval(interval);
-          const p = generateProfile(username, answers);
-          setProfile(p);
+          const stats = generateProfile(username, age, answers);
+          setProfile({
+            ...stats,
+            name: username,
+            age,
+            zodiac: zodiacLabel(zodiac),
+          });
           setTimeout(() => setDone(true), 400);
           return s;
         }
@@ -45,7 +53,7 @@ export default function GeneratingPage() {
       });
     }, 550);
     return () => clearInterval(interval);
-  }, [username, answers, setProfile, router]);
+  }, [username, age, zodiac, answers, setProfile, router]);
 
   if (!done || !profile) {
     return (
@@ -63,7 +71,7 @@ export default function GeneratingPage() {
               <span
                 className={
                   "w-1.5 h-1.5 rounded-full " +
-                  (i <= step ? "bg-[var(--emerald)]" : "bg-white/20")
+                  (i <= step ? "bg-[var(--blush)]" : "bg-white/20")
                 }
               />
               {s}
@@ -79,7 +87,7 @@ export default function GeneratingPage() {
       <Eyebrow>Your identity is ready</Eyebrow>
       <h1 className="font-display text-2xl mb-6">This is you, to strangers.</h1>
       <div className="w-full mb-4">
-        <IdentityCard username={username} profile={profile} />
+        <IdentityCard profile={profile} />
       </div>
       <ProfileCard profile={profile} />
       <p className="text-xs text-[var(--text-muted)] mt-4 mb-6">
